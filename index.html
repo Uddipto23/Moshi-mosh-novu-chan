@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moshi Mosh Novu Chan 💝</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+  body {
+    margin: 0;
+    background-color: #ffe6f9;
+    overflow: hidden;
+    font-family: 'Comic Neue', cursive;
+  }
+
+  .giftbox {
+    width: 150px;
+    height: 150px;
+    background: #ff9dcf;
+    border-radius: 12px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -200px;
+    animation: drop 1.5s ease-out forwards;
+    box-shadow: 0 8px 20px rgba(255, 0, 150, 0.3);
+    cursor: pointer;
+  }
+
+  .lid {
+    width: 150px;
+    height: 40px;
+    background: #ff77aa;
+    border-radius: 12px 12px 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: center;
+    transition: transform 0.5s ease;
+  }
+
+  .giftbox.open .lid {
+    transform: rotateX(120deg);
+  }
+
+  @keyframes drop {
+    0% { top: -200px; }
+    80% { top: 60px; }
+    100% { top: 50px; }
+  }
+
+  .message {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url('https://drive.google.com/uc?export=view&id=1wo7UWDJkRsA6YNeNMeKF1RYYpO2_c4Z6');
+    background-size: cover;
+    border-radius: 20px;
+    padding: 40px;
+    width: 300px;
+    text-align: center;
+    color: #ff2b80;
+    font-size: 18px;
+    line-height: 1.5;
+    transition: opacity 1s ease;
+    box-shadow: 0 0 25px rgba(255, 182, 193, 0.7);
+  }
+
+  .show {
+    opacity: 1;
+  }
+
+  .emoji {
+    font-size: 22px;
+  }
+</style>
+</head>
+<body>
+  <div class="giftbox" id="giftbox">
+    <div class="lid"></div>
+  </div>
+  <div class="message" id="message">
+    <p>
+      Hola! Novu Chan🫣<br>
+      Where have you been? Came and gone in seconds? That's not good 😾💢<br><br>
+      Are you hungry? 🍜🍰<br>
+      Need money? 💸💖<br><br>
+      Tell me what you need? Don’t disappear again 😿🌸✨
+    </p>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="bgmusic" preload="auto">
+    <source src="https://cdn.pixabay.com/audio/2023/04/27/audio_birds-of-a-feather-preview.mp3" type="audio/mpeg">
+  </audio>
+
+<script>
+  const giftbox = document.getElementById('giftbox');
+  const message = document.getElementById('message');
+  const bgmusic = document.getElementById('bgmusic');
+
+  giftbox.addEventListener('click', () => {
+    giftbox.classList.add('open');
+    bgmusic.play();
+    setTimeout(() => {
+      giftbox.style.display = 'none';
+      message.classList.add('show');
+    }, 800);
+  });
+
+  // Stop after 30 seconds
+  bgmusic.addEventListener('timeupdate', () => {
+    if (bgmusic.currentTime > 30) {
+      bgmusic.pause();
+    }
+  });
+</script>
+</body>
+</html>
